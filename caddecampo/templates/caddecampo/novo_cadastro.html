@@ -1,0 +1,41 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+	<h3>Cadastro de Informações</h3>
+	<br>
+	
+ 	<div class="card-deck">
+ 		<div class="card">
+  			<h5 class="card-header">PRORIEDADE</h5>
+  			<div class="card-body">
+		    	<h5 class="card-title">Nova Propriedade</h5>
+		    	<p class="card-text">Adiciona pelo menos uma propriedade para poder usar o caderno de campo.</p>
+		    	<a href="/novo_propriedade" class="btn btn-primary">Adicionar</a>
+  			</div>
+		</div>  
+		<div class="card">
+  			<h5 class="card-header">ÁREA</h5>
+  			<div class="card-body">
+		    	<h5 class="card-title">Nova Área</h5>
+		    	<p class="card-text">Adicione uma ou mais áreas pretencentes à uma propriedade.</p>
+		    	<a href="/novo_area" class="btn btn-primary">Adicionar</a>
+  			</div>
+		</div>  
+		<div class="card">
+  			<h5 class="card-header">ADUBO</h5>
+  			<div class="card-body">
+		    	<h5 class="card-title">Novo Adubo</h5>
+		    	<p class="card-text">Cadastre aqui os adubos usados nas culturas.</p>
+		    	<a href="/novo_adubo" class="btn btn-primary">Adicionar</a>
+  			</div>
+		</div>
+		<div class="card">
+  			<h5 class="card-header">DEFENSIVO</h5>
+  			<div class="card-body">
+		    	<h5 class="card-title">Novo Defensivo</h5>
+		    	<p class="card-text">Cadastre aqui os defensivos usados nas culturas.</p>
+		    	<a href="/novo_defensivo" class="btn btn-primary">Adicionar</a>
+  			</div>
+		</div>  
+	</div>
+{% endblock %}

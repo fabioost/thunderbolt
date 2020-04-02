@@ -1,0 +1,63 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+
+  {% for pro in propriedades %}
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{pro.propriedade_nome}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{pro.propriedade_nome}}</h5>
+          <p class="card-text">Propriedade localizada em: {{pro.propriedade_summary}}</p>
+          {% if pro.propriedade_ativa %}
+            <p class="card-text">Propriedade Ativa</p>
+          {%else%}
+            <p class="card-text">Propriedade Finalizada</p>
+          {%endif%}
+
+        </div>
+    </div>  
+  {% endfor %}
+  {% for ar in areas %}
+    <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{ar.area_nome}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{ar.area_nome}}</h5>
+          <p class="card-text">Cultura: {{ar.area_cultura}}.</p>
+          <p class="card-text">Data do Plantio: {{ar.area_data_plantiu}}.</p>
+          {% if ar.area_ativa %}
+            <p class="card-text">Area Ativa</p>
+          {%else%}
+            <p class="card-text">area Finalizada</p>
+          {%endif%}
+        </div>
+    </div>  
+  {% endfor %}
+  {% for de in defensivos %}
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{de.defensivo_nome}}</div>
+        <div class="card-body">
+          <h5 class="card-title">{{de.defensivo_nome}}</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>  
+  {% endfor %}
+  {% for ad in adubos %}
+    <div class="card text-white bg-warning mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{ad.adubo_nome}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Primary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>  
+  {% endfor %}
+  {% for co in colheitas %}
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+      <div class="card-header">{{co.colheita_quantia}}</div>
+        <div class="card-body">
+          <h5 class="card-title">Primary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+    </div>  
+  {% endfor %}
+  
+{% endblock %}

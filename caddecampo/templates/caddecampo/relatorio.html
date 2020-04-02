@@ -1,0 +1,28 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+<h3>Minhas Propriedades</h3>
+  {% for pro in propriedades %}
+    <div class="card">
+      <h5 class="card-header">{{pro.propriedade_nome}}</h5>
+      <div class="card-body">
+        <p class="card-text">Localização: {{pro.propriedade_summary}}</p>
+        {% if pro.propriedade_ativa %}
+          <p class="card-text">Situação: Ativa</p>
+        {% else %}
+          <p class="card-text">Situação: Desativada</p>
+        {% endif %}
+
+        <a href="/{{pro.slug}}" class="btn btn-primary">Visitar</a>
+        <a href="/editar_propriedade/{{pro.id}}" class="btn btn-primary">Editar</a>
+      </div>
+    </div>
+    
+  {% endfor %}
+
+{% endblock %}
+
+
+
+
+

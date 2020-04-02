@@ -1,10 +1,11 @@
+
 {% load static %}
 
 <!DOCTYPE html>
 <html>
 	<head>
 
-		<title>link_project</title>
+		<title>Caderno de Campo</title>
 		
 		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 		<meta name="viewport" content="width=device-width, initial-scate=1.0">
@@ -12,9 +13,8 @@
 	</head>
 	<body>
 		<div>
-			{% include "main/includes/navbar.html" %}
-			{% include "main/includes/messages.html" %}
-		
+			{% include "caddecampo/includes/navbar2.html" %}
+			{% include "caddecampo/includes/messages.html" %}
 
 			
 			<div class="container">	
@@ -34,6 +34,12 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.5/datepicker.min.js" integrity="sha256-/7FLTdzP6CfC1VBAj/rsp3Rinuuu9leMRGd354hvk0k=" crossorigin="anonymous"></script>
 		<!--<input id="datepicker">-->
 
+		<script>
+  			$("#id_apontamento_published").datepicker({format:'dd/mm/yyyy',});
+  			$("#id_area_data_plantiu").datepicker({format:'dd/mm/yyyy',});
+  			$("#id_area_data_plantiu_fim").datepicker({format:'dd/mm/yyyy',});
+  			$("#id_area_data_ini_colheita").datepicker({format:'dd/mm/yyyy',});
+		</script>
 
 	</body>
 

@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 from .forms import EntradaTeste
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -24,3 +25,11 @@ def nova_entrada(request):
 	return render(request=request,
 				  template_name= "main/entrada.html",
 				  context={"form":form})
+
+
+
+@login_required
+def cad_home(request):
+	return render(request=request,
+				  template_name="caddecampo/home.html",
+				  context={})#

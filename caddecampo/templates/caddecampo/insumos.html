@@ -1,0 +1,33 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+	<div>
+	  <h3>Adubos</h3>
+		{% for ad  in adubos %}
+			  <div class="card">
+			    <h5 class="card-header">{{ad.adubo_nome}}</h5>
+			    <div class="card-body">
+			      <p class="card-text">Classificação: {{ad.adubo_classificacao}}</p>
+			      <p class="card-text">Composição: {{ad.adubo_composicao}}</p>
+			      <a href="/deletar_adubo/{{ad.id}}" class="btn btn-primary">Apagar</a>
+			    </div>
+			  </div>
+		{%endfor%}
+	</div>
+	<div>
+		<br><br>
+		<h3>Defensivos</h3>
+		{% for def in defensivos %}
+			  <div class="card"> 
+			    <h5 class="card-header">{{def.defensivo_nome}}</h5>
+			    <div class="card-body">
+			      <p class="card-text">Classificação: {{def.defensivo_classificacao}}</p>
+			      <p class="card-text">Formulação: {{def.defensivo_formulacao}}</p>
+			      <p class="card-text">Dosagem Padrão(g/ml por 100L): {{def.defensivo_dosagem}}</p>
+			      <a href="/deletar_defensivo/{{def.id}}" class="btn btn-primary">Apagar</a>
+			    </div>
+			  </div> 	
+		{%endfor%}
+	</div>
+
+{% endblock %}

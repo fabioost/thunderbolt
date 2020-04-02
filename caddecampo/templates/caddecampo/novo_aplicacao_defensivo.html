@@ -1,0 +1,52 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  <h3>Registre Nova Aplicação de Defensivo:</h3><br>
+  <div >
+	
+	  <form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+  		<button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Salvar</button>
+
+  	</form> 	
+  </div>
+
+  <br><br><br>
+  <h4>Defensivos Cadastrados</h4><br>
+  <div>
+
+    {% for def in defensivos %}
+        <div class="card">
+          <h5 class="card-header">{{def.defensivo_nome}}</h5>
+          <div class="card-body">
+            {% if def.defensivo_formulacao == "Solido"%}
+              <p class="card-text">Dosagem Padrão: {{def.defensivo_dosagem}}g por 100L</p>
+            {% else %}
+              <p class="card-text">Dosagem Padrão: {{def.defensivo_dosagem}}ml por 100L</p>
+            {% endif %}
+            {% if def.defensivo_reentrada > 1%}
+              <p class="card-text">Intervalo de Reentradas: {{def.defensivo_reentrada}} dias</p>
+            {% else %}
+              <p class="card-text">Intervalo de Reentradas: {{def.defensivo_reentrada}} dia</p>
+            {% endif %}
+        </div>
+    {%endfor%}
+  </div>
+  <br>
+  <h4>Áreas Ativas</h4><br>
+  <div>
+
+    {% for ar in areas %}
+        <div class="card">
+          <h5 class="card-header">{{ar.area_nome}}</h5>
+          <div class="card-body">
+            <p class="card-text">Data do plantio: {{ar.area_data_plantiu}}</p>
+            <p class="card-text">Cultura: {{ar.area_cultura}}</p>
+        </div>
+    {%endfor%}
+  </div>
+		
+{% endblock %}

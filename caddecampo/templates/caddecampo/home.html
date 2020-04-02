@@ -1,0 +1,55 @@
+{% extends "caddecampo/header.html" %}
+
+ 
+
+{% block content %} 
+  <div >
+   {% if user.is_authenticated%}
+          
+          <a href="/novo_apontamento/0" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Apontamentos</a>
+         
+          <a href="/novo_cadastro" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Cadastros</a>
+         
+          <a href="/relatorio" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Relatórios</a>
+
+          {% if defensivos or adubos or colheitas %}
+              <br><br>
+              <h4>Apontamentos Hoje</h4>
+              <br>
+              {% for de in defensivos %}
+                 <div class="card">
+                    <h5 class="card-header">Aplicação de Defensivo</h5>
+                     <div class="card-body">
+                      <p class="card-text">Defensivo: {{de.defensivo_nome}}</p>
+                      <p class="card-text">Area: {{de.area}}</p>
+                  </div> 
+              {% endfor %}
+              {% for ad in adubos %}
+                 <div class="card">
+                    <h5 class="card-header">Aplicação de Adubo</h5>
+                     <div class="card-body">
+                      <p class="card-text">Adubo: {{ad.adubo_nome}}</p>
+                      <p class="card-text">Area: {{ad.area}}</p>
+                  </div> 
+              {% endfor %}
+              {% for co in colheitas %}
+                 <div class="card">
+                    <h5 class="card-header">Colheita</h5>
+                     <div class="card-body">
+                      <p class="card-text">Cultura: {{co.colheita_cultura}}</p>
+                      <p class="card-text">Quantia: {{co.colheita_quantia}} {{co.colheita_unidade}}</p>
+                      <p class="card-text">Area: {{co.area}}</p>
+                  </div> 
+              {% endfor %}
+
+          {% endif %}
+
+   {% else %}
+      
+      <a href="/accounts/login/" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Entre</a>
+      
+      <a href="/register" class="btn btn-primary btn-lg btn-block active" role="button" aria-pressed="true">Cadastre-se</a>
+   {% endif %}
+  </div>
+
+{% endblock %}

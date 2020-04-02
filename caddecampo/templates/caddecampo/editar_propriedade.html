@@ -1,0 +1,16 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  <h3>Editar Propriedade:<br></h3>
+  <div>
+	
+	<form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+  		<button id='btn_novo_pro' style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Salvar</button>
+  		<a href="/deletar_propriedade/{{id}}" class="btn btn-danger">Deletar</a>
+  	</form>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  
+  <h3>Desativar Area:</h3><br>
+  <div>
+	  <form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+      <p>
+        ATENÇÃO: Ao desativar uma área signinifica que a produção da mesma está encerrada.<br>
+        Depois de destivada a área não poderá mais ser editada ou reativada.<br>
+        Todas as área desativadas serão automáticamente deletadas após 30 dias.<br>
+      </p>
+      <p>Tem certeza que deseja desativar esta área?<br></p>
+  		<button  class="btn btn-danger" type="submit">Sim</button>
+  		<a href="/home" class="btn btn-primary">Não</a>
+  	 </form>	
+  </div>
+{% endblock %}

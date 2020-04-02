@@ -1,0 +1,33 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+ <h3>Apontamentos</h3>
+  <br>
+  
+  <div class="card-deck">
+    <div class="card">
+        <h5 class="card-header">DEFENSIVO</h5>
+        <div class="card-body">
+          <h5 class="card-title">Nova Aplicação de Defensivo</h5>
+          <p class="card-text">Registre aqui aplicaçẽs de defensivo.</p>
+          <a href="/novo_aplicacao_defensivo" class="btn btn-primary">Registrar</a>
+        </div>
+    </div>  
+    <div class="card">
+        <h5 class="card-header">ADUBO</h5>
+        <div class="card-body">
+          <h5 class="card-title">Nova Aplicação de Adubo</h5>
+          <p class="card-text">Registre aqui aplicaçẽs de adubo.</p>
+          <a href="/novo_aplicacao_adubo" class="btn btn-primary">Registrar</a>
+        </div>
+    </div>  
+    <div class="card">
+        <h5 class="card-header">COLHEITA</h5>
+        <div class="card-body">
+          <h5 class="card-title">Nova Colheita</h5>
+          <p class="card-text">Registre aqui as colheitas.</p>
+          <a href="/novo_colheita" class="btn btn-primary">Registrar</a>
+        </div>
+    </div>  
+  </div>
+{% endblock %}

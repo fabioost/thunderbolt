@@ -1,0 +1,17 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  
+  <h3>Deletar Area:</h3><br>
+  <div>
+	  <form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+      	Tem certeza que deseja deletar esta área?
+  		<button  class="btn btn-danger" type="submit">Sim</button>
+  		<a href="/home" class="btn btn-primary">Não</a>
+  	 </form>	
+  </div>
+{% endblock %}

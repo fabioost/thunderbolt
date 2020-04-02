@@ -1,0 +1,28 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+<h3>Profile</h3>
+ 
+    <div class="card">
+      <h5 class="card-header">{{user.username}}</h5>
+      <div class="card-body">
+        <p class="card-text">Nome: {{my_user.usuario_nome}}</p>
+        <p class="card-text">Endereço: {{my_user.usuario_endereço}}</p>
+        <p class="card-text">Bairro: {{my_user.usuario_bairro}}</p>
+        <p class="card-text">Cidade: {{my_user.usuario_cidade}}</p>
+        <p class="card-text">Estado: {{my_user.usuario_estado}}</p>
+        <p class="card-text">CEP: {{my_user.usuario_cep}}</p>
+        <p class="card-text">Fone: {{my_user.usuario_fone}}</p>
+        <p class="card-text">CPF: {{my_user.usuario_cpf}}</p>
+        <p class="card-text">IE: {{my_user.usuario_ie}}</p>
+        <a href="/editar_register/{{user.id}}" class="btn btn-primary">Editar</a>
+      </div>
+    </div>
+    
+
+{% endblock %}
+
+
+
+
+

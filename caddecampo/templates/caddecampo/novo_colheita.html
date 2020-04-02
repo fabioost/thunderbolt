@@ -1,0 +1,28 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  <h3>Registre Nova Colheita:<br></h3>
+  <div>
+	<form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+  		<button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Salvar</button>
+
+  	</form>
+  </div>
+  <br><br><br>
+  <h4>Áreas Ativas</h4><br>
+  <div>
+
+    {% for ar in areas %}
+        <div class="card">
+          <h5 class="card-header">{{ar.area_nome}}</h5>
+          <div class="card-body">
+            <p class="card-text">Data do plantio: {{ar.area_data_plantiu}}</p>
+            <p class="card-text">Cultura: {{ar.area_cultura}}</p>
+        </div>
+    {%endfor%}
+  </div>
+{% endblock %}

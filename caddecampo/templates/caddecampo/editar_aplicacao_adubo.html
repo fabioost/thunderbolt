@@ -1,0 +1,17 @@
+{% extends "caddecampo/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  <h3>Editar Aplicação de Adubo:</h3><br>
+  <div>
+	
+	<form  method="POST">
+  		{% csrf_token %} 
+  		{{ form|crispy}}
+  		<button style="background-color:#F4EB16; color:blue" class="btn btn-outline-info" type="submit">Salvar</button>
+  		<a href="/deletar_aplicacao_adubo/{{id}}" class="btn btn-danger">Deletar</a>
+  	</form>
+  </div>
+
+{% endblock %}

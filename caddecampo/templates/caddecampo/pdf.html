@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <title>Caderno de Campo</title>
+        <style type="text/css">
+            body {
+                font-weight: 200;
+                font-size: 14px;
+            }
+            .header {
+                font-size: 20px;
+                font-weight: 100;
+                text-align: center;
+                color: #007cae;
+            }
+            .title {
+                font-size: 22px;
+                font-weight: 100;
+               /* text-align: right;*/
+               padding: 10px 20px 0px 20px;  
+            }
+            .title span {
+                color: #007cae;
+            }
+            .details {
+                padding: 10px 20px 0px 20px;
+                text-align: left !important;
+                /*margin-left: 40%;*/
+            }
+            .hrItem {
+                border: none;
+                height: 1px;
+                /* Set the hr color */
+                color: #333; /* old IE */
+                background-color: #fff; /* Modern Browsers */
+            }
+        </style>
+    </head>
+    <body>
+        <h2 style="text-align:center">Caderno de Campo</h2>
+        <br>
+        <table class="table">
+            <tr>
+                <td><h4>Produtor: {{usuario_nome}}</h4></td>
+                <td><h4>CPF: {{usuario_cpf}}</h4></td>
+            </tr>
+            <tr>
+                <td><h4>IE: {{usuario_ie}}</h4></td>
+                <td><h4>Cidade: {{usuario_cidade}}</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Identificação da área:  {{nome}}</h4></td>
+                <td><h4>Cultura: {{cultura}}</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Data do inicio do plantio:  {{data}}</h4></td>
+                <td><h4>Localização: {{localizacao}}</h4></td>
+            </tr>
+            <tr>
+                <td><h4>Data do fim do plantio:  {{data_fim}}</h4></td>
+                <td><h4></h4></td>
+            </tr>
+            <tr>
+                <td><h4>Quantidade de plantas:  {{n_plantas}}</h4></td>
+                <td><h4>Tamanho(m^2): {{tamanho}}</h4></td>
+            </tr>
+        </table>
+        <br>
+        <h4>Apontamentos:</h4>
+
+    <h4 style="text-align:center">Tabela de aplicações de defensivos</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="text-align:left" scope="col">Data</th>
+          <th style="text-align:left" scope="col">Nome</th>
+          <th style="text-align:left" scope="col">Dosagem(g ou ml/100l)</th>
+          <th style="text-align:left" scope="col">Volume(l/he)</th>
+          <th style="text-align:left" scope="col">Praga</th>
+          <th style="text-align:left" scope="col">Intervalo(dias)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for de in defensivos %}
+          <tr>
+            <th style="text-align:left">{{de.apontamento_published|date:"d/m/Y"}}</th>
+            <td>{{de.defensivo_nome}}</td>
+            <td>{{de.defensivo_dosagem}}</td>
+            <td>{{de.defensivo_volume_he}}</td>
+            <td>{{de.defensivo_praga}}</td>
+            <td>{{de.defensivo_intervalo}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  <br>
+  <br>
+  <h4 style="text-align:center">Tabela de aplicação de adubos</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="text-align:left" scope="col">Data</th>
+          <th style="text-align:left" scope="col">Nome</th>
+          <th style="text-align:left" scope="col">Dosagem(kg/he)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ad in adubos %}
+          <tr>
+            <th style="text-align:left" >{{ad.apontamento_published|date:"d/m/Y"}}</th>
+            <td>{{ad.adubo_nome}}</td>
+            <td>{{ad.adubo_dosagem_he}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  <br>
+  <br>
+  <h4 style="text-align:center">Tabela de Colheitas</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th style="text-align:left" scope="col">Data</th>
+          <th style="text-align:left" scope="col">Quantidade</th>
+          <th style="text-align:left" scope="col">Unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for col in colheitas %}
+          <tr>
+            <th style="text-align:left" >{{col.apontamento_published|date:"d/m/Y"}}</th>
+            <td>{{col.colheita_quantia}}</td>
+            <td>{{col.colheita_unidade}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+  <h4 style="text-align:center">Resumo</h4>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th style="text-align:left" scope="col">Colheita Total</th>
+          <td>{{colheita_total}}</td>
+          <td>{{unidade}}</td>
+        </tr>
+        <tr>
+          <th style="text-align:left" scope="col">Colheita p/ planta</th>
+          <td>{{unides_p_planta}}</td>
+          <td>{{unidade}}</td>
+        </tr>
+        
+        <tr>
+          <th style="text-align:left" scope="col">Defensivo em pó p/ planta</th>
+          <td>{{def_solid_planta}}</td>
+          <td>g</td>
+        </tr>
+        <tr>
+          <th style="text-align:left" scope="col">Defensivo liquido p/ planta</th>
+          <td>{{def_liqui_planta}}</td>
+          <td>ml</td>
+        </tr>
+        <tr>
+          <th style="text-align:left" scope="col">Adubo p/ planta</th>
+          <td>{{adubo_planta}}</td>
+          <td>Kg</td>
+        </tr>
+      </tbody>
+    </table>
+
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+<!--
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Areas</title>
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        .table {
+            width: 100%;
+            max-width: 100%;
+            margin-bottom: 5px;
+            background-color: #fff;
+        }
+        .table th,
+        .table td {
+            padding: 5px;
+            vertical-align: top;
+            border-top: 1px solid #000;
+            text-align: center;
+        }
+        .table thead th {
+            vertical-align: bottom;
+            border-bottom: 2px solid #000;
+        }
+        .table tbody + tbody {
+            border-top: 2px solid #000;
+        }
+        .table .table {
+            background-color: #fff;
+        }
+        .list-group {
+            display: block;
+            width: 100%;
+            list-style: none;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .list-group p {
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            list-style: none;
+            font-size: 1.1em;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Areas</h3>
+        </div>
+
+        <div class="list-group">
+            <p>Name</p>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Data</th>
+                <th>Nome</th>
+                <th>Dosagem(g ou ml/100l)</th>
+                <th>Volume(l/he)</th>
+                <th>Praga</th>
+                <th>Intervalo(dias)</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for de in defensivos %}
+                <tr>
+                    <th>{{de.apontamento_published}}</th>
+                    <td>{{de.defensivo_nome}}</td>
+                    <td>{{de.defensivo_dosagem}}</td>
+                    <td>{{de.defensivo_volume}}</td>
+                    <td>{{de.defensivo_praga}}</td>
+                    <td>{{de.defensivo_intervalo}}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+-->

@@ -1,0 +1,48 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+	<div>
+	  <h3>Áreas Ativas</h3>
+		{% for ar in areas %}
+			{% if ar.area_ativa %}
+			  <div class="card">
+			    <h5 class="card-header">{{ar.area_nome}}</h5>
+			    <div class="card-body">
+			      <p class="card-text">Propriedade: {{nome}}</p>
+			      <p class="card-text">Data do plantio: {{ar.area_data_plantiu}}</p>
+			      <p class="card-text">Cultura: {{ar.area_cultura}}</p>
+			      {% if ar.area_ativa%}
+			        <p class="card-text">Situação: Ativa</p>
+			      {%else%}
+			        <p class="card-text">Situação: Desativada</p>
+			      {%endif%}
+			      <a href="/{{ar.slug}}" class="btn btn-primary">Visitar</a>
+			      <a href="/editar_area/{{ar.id}}" class="btn btn-primary">Editar</a>
+			    </div>
+			  </div>
+		  	{% endif %}
+		{%endfor%}
+	</div>
+	<div>
+		<br><br>
+		<h3>Áreas Desativadas</h3>
+		{% for ar in areas %}
+			{% if ar.area_ativa != True %}
+			  <div class="card"> 
+			    <h5 class="card-header">{{ar.area_nome}}</h5>
+			    <div class="card-body">
+			      <p class="card-text">Propriedade: {{nome}}</p>
+			      <p class="card-text">Data do plantio: {{ar.area_data_plantiu}}</p>
+			      <p class="card-text">Cultura: {{ar.area_cultura}}</p>
+			      {% if ar.area_ativa%}
+			        <p class="card-text">Situação: Ativa</p>
+			      {%else%}
+			        <p class="card-text">Situação: Desativada</p>
+			      {%endif%}
+			      <a href="/{{ar.slug}}" class="btn btn-primary">Visitar</a>
+			    </div>
+			  </div>
+		  	{% endif %}
+		{%endfor%}
+	</div>
+{% endblock %}

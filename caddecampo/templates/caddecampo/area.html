@@ -1,0 +1,92 @@
+{% extends "caddecampo/header.html" %}
+
+{% block content %}	
+  <h3>Apontamentos da {{nome}}</h3>
+  <br>
+  <br>
+  <a href="/pdf/{{single_slug}}" class="btn btn-primary">PDF</a>
+  <br>
+  <br>
+  <h4>Tabela de aplicações de defensivos</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Dosagem<br>(g ou ml/100l)</th>
+          <th scope="col">Volume<br>(l/he)</th>
+          <th scope="col">Intervalo<br>(dias)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for de in defensivos %}
+          <tr>
+            <th>{{de.apontamento_published|date:"d/m/Y"}}<br>
+              {% if situacao %}
+                <a href="/editar_aplicacao_defensivo/{{de.id}}" class="btn btn-primary">Editar</a>
+              {% endif %}
+            </th>
+            <td>{{de.defensivo_nome}}</td>
+            <td>{{de.defensivo_dosagem}}</td>
+            <td>{{de.defensivo_volume_he}}</td>
+            <td>{{de.defensivo_intervalo}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+  <br>
+  <br>
+  <h4>Tabela de aplicação de adubos</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Dosagem<br>(kg/he)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ad in adubos %}
+          <tr>
+            <th>{{ad.apontamento_published|date:"d/m/Y"}}<br>
+              {% if situacao %}
+                <a href="/editar_aplicacao_adubo/{{ad.id}}" class="btn btn-primary">Editar</a>
+              {% endif %}
+            </th>
+            <td>{{ad.adubo_nome}}</td>
+            <td>{{ad.adubo_dosagem_he}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br>
+  <br>
+  <h4>Tabela de Colheitas</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Data</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Unidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for col in colheitas %}
+          <tr>
+            <th>{{col.apontamento_published|date:"d/m/Y"}}<br>
+              {% if situacao %}
+                <a href="/editar_colheita/{{col.id}}" class="btn btn-primary">Editar</a>
+              {% endif %}
+            </th>
+            <td>{{col.colheita_quantia}}</td>
+            <td>{{col.colheita_unidade}}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <br>
+    <br>
+   
+{% endblock %}

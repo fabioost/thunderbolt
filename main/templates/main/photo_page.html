@@ -1,0 +1,14 @@
+{% extends "main/header.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}	
+  <h3>Photo View<br></h3>
+  <div>
+  	<p> {{ MEDIA_URL }}</p>
+  	<p> {{ foto.photo.url }}</p>
+	
+	<img src="{{ foto.photo.url }}">
+
+  </div>
+{% endblock %}

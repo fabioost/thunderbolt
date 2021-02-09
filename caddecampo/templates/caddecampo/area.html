@@ -68,6 +68,7 @@
       <thead>
         <tr>
           <th scope="col">Data</th>
+          <th scope="col">Lote</th>
           <th scope="col">Quantidade</th>
           <th scope="col">Unidade</th>
         </tr>
@@ -80,6 +81,7 @@
                 <a href="/editar_colheita/{{col.id}}" class="btn btn-primary">Editar</a>
               {% endif %}
             </th>
+            <td>{{col.id}}</td>
             <td>{{col.colheita_quantia}}</td>
             <td>{{col.colheita_unidade}}</td>
           </tr>

@@ -26,7 +26,7 @@ SECRET_KEY = 'r2hr#58-+1_ty-se_d6j#9=^@v+b59ls%b3@_%8_4m5((rbj*l'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['link_project.herokuapp.com', '192.168.1.11', '127.0.0.1', '192.168.1.11.xip.io', 'a03bc953.ngrok.io']
+ALLOWED_HOSTS = ['192.168.1.10', '127.0.0.1']
 
 
 # Application definition

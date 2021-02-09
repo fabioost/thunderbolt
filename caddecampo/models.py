@@ -1,6 +1,6 @@
 from django import forms
 from django.db import models
-from datetime import datetime 
+from datetime import datetime
 from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 
@@ -9,10 +9,10 @@ from django.utils.text import slugify
 
 
 class Propriedade(models.Model):
-	propriedade_nome = models.CharField(max_length=50)
-	propriedade_summary = models.CharField(max_length=50) #localizacao
+	propriedade_nome = models.CharField(max_length=300)
+	propriedade_summary = models.CharField(max_length=300) #localizacao
 	propriedade_ativa = models.BooleanField(default=True)
-	proriedade_slug = models.CharField(max_length=50, default=1) 
+	proriedade_slug = models.CharField(max_length=300, default=1)
 	owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 	slug = models.SlugField(unique=True)
 
@@ -30,14 +30,14 @@ class Propriedade(models.Model):
 class Area(models.Model):
 	area_data_plantiu = models.DateField(default=datetime.now) #inicio do plantio
 	area_data_plantiu_fim = models.DateField(default=datetime.now) #fim do plantio
-	area_nome = models.CharField(max_length=50)
+	area_nome = models.CharField(max_length=300)
 	area_tamanho = models.IntegerField()
 	area_nplantas = models.IntegerField()
-	area_cultura = models.CharField(max_length=50)
+	area_cultura = models.CharField(max_length=300)
 	area_data_ini_colheita = models.DateField(default=datetime.now) #Data do desativamento
-	area_summary = models.CharField(max_length=50, default='non')
+	area_summary = models.CharField(max_length=300, default='non')
 	area_ativa = models.BooleanField(default=True)
-	area_slug = models.CharField(max_length=50, default=1)
+	area_slug = models.CharField(max_length=300, default=1)
 	propriedade = models.ForeignKey(Propriedade, default=1, verbose_name="Propriedade", on_delete=models.CASCADE)
 	slug = models.SlugField(unique=True)
 
@@ -50,16 +50,16 @@ class Area(models.Model):
 		verbose_name_plural = "Areas"
 
 	def __str__(self):
-		return self.area_nome 
-		
+		return self.area_nome
+
 
 
 class AplicacaoAdubo(models.Model):
 	apontamento_published = models.DateField(default=datetime.now)
-	adubo_nome = models.CharField(max_length=30)
+	adubo_nome = models.CharField(max_length=300)
 	adubo_dosagem = models.IntegerField()
 	adubo_dosagem_he = models.IntegerField(default=1)
-	plantio_slug = models.CharField(max_length=30, default=1)
+	plantio_slug = models.CharField(max_length=300, default=1)
 	area = models.ForeignKey(Area, default=1, verbose_name="Apontamento plantio", on_delete=models.CASCADE)
 	#slug = models.SlugField(unique=True)
 
@@ -75,13 +75,13 @@ class AplicacaoAdubo(models.Model):
 
 class AplicacaoDefensivo(models.Model):
 	apontamento_published = models.DateField(default=datetime.now)
-	defensivo_nome = models.CharField(max_length=30)
+	defensivo_nome = models.CharField(max_length=300)
 	defensivo_dosagem = models.IntegerField()
-	defensivo_volume = models.IntegerField() 
+	defensivo_volume = models.IntegerField()
 	defensivo_volume_he = models.IntegerField(default=1)#litros por hectare
-	defensivo_praga = models.CharField(max_length=30)
+	defensivo_praga = models.CharField(max_length=300)
 	defensivo_intervalo = models.IntegerField(default=1)
-	plantio_slug = models.CharField(max_length=30, default=1)
+	plantio_slug = models.CharField(max_length=300, default=1)
 	area = models.ForeignKey(Area, default=1, verbose_name="Apontamento plantio", on_delete=models.CASCADE)
 	#slug = models.SlugField(unique=True)
 
@@ -105,11 +105,11 @@ class Adubo(models.Model):
 		('Sintetico','Sintetico')
 	)
 
-	adubo_nome = models.CharField(max_length=30)
-	adubo_classificacao = models.CharField(max_length=30, choices = CLASS_CHOICES) #foliar naofoliar
-	adubo_composicao = models.CharField(max_length=20, choices = COMP_CHOICES) # organico sintetico
-	adubo_summary = models.CharField(max_length=20, default='non')
-	adubo_slug = models.CharField(max_length=20, default=1)
+	adubo_nome = models.CharField(max_length=300)
+	adubo_classificacao = models.CharField(max_length=300, choices = CLASS_CHOICES) #foliar naofoliar
+	adubo_composicao = models.CharField(max_length=200, choices = COMP_CHOICES) # organico sintetico
+	adubo_summary = models.CharField(max_length=200, default='non')
+	adubo_slug = models.CharField(max_length=200, default=1)
 	#propriedade = models.ForeignKey(Propriedade, default=1, verbose_name="Propriedade", on_delete=models.CASCADE)
 	owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -130,22 +130,22 @@ class Defensivo(models.Model):
 		('Herbicida','Herbicida'),
 		('Inceticida','Inceticida'),
 		('Nematicida','Nematicida'),
-		('Biologico','Biologico')	
+		('Biologico','Biologico')
 	)
 	COMP_CHOICES = (
 		('Liquido','Liquido'),
 		('Solido','Solido')
 	)
-	defensivo_nome = models.CharField(max_length=20)
-	defensivo_classificacao = models.CharField(max_length=20, choices = CLASS_CHOICES)
-	defensivo_formulacao = models.CharField(max_length=20, choices = COMP_CHOICES) #liquido solido
-	#defensivo_limitereentradas = models.CharField(max_length=20) #dias
+	defensivo_nome = models.CharField(max_length=200)
+	defensivo_classificacao = models.CharField(max_length=200, choices = CLASS_CHOICES)
+	defensivo_formulacao = models.CharField(max_length=200, choices = COMP_CHOICES) #liquido solido
+	#defensivo_limitereentradas = models.CharField(max_length=200) #dias
 	defensivo_reentrada = models.IntegerField(default=1)  #dias
-	defensivo_dosagem = models.IntegerField(default=30)
-	defensivo_principiosativos = models.CharField(max_length=20)
-	defensivo_indicacoes = models.CharField(max_length=20)
-	defensivo_summary = models.CharField(max_length=20, default='non')
-	defensivo_slug = models.CharField(max_length=20, default=1)
+	defensivo_dosagem = models.IntegerField(default=300)
+	defensivo_principiosativos = models.CharField(max_length=200)
+	defensivo_indicacoes = models.CharField(max_length=200)
+	defensivo_summary = models.CharField(max_length=200, default='non')
+	defensivo_slug = models.CharField(max_length=200, default=1)
 	#propriedade = models.ForeignKey(Propriedade, default=1, verbose_name="Propriedade", on_delete=models.CASCADE)
 	owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
 
@@ -163,10 +163,10 @@ class Colheita(models.Model):
 		('Unid','Unid')
 	)
 	apontamento_published = models.DateField(default=datetime.now)
-	colheita_cultura = models.CharField(max_length=20, default='non')
+	colheita_cultura = models.CharField(max_length=200, default='non')
 	colheita_quantia = models.IntegerField()
-	colheita_unidade = models.CharField(max_length=20, default='Kg', choices = CLASS_CHOICES)
-	colheita_slug = models.CharField(max_length=20, default=1)
+	colheita_unidade = models.CharField(max_length=200, default='Kg', choices = CLASS_CHOICES)
+	colheita_slug = models.CharField(max_length=200, default=1)
 	#slug = models.SlugField(prepopulate_from=('apontamento_published',))
 	area = models.ForeignKey(Area, default=1, verbose_name="Area colheita", on_delete=models.CASCADE)
 	#slug = models.SlugField(unique=True)
@@ -179,6 +179,3 @@ class Colheita(models.Model):
 	class Meta:
 		# Gives the proper plural name for admin
 		verbose_name_plural = "Colheitas"
-
-	
-

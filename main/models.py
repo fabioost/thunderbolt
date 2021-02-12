@@ -12,12 +12,12 @@ class TestEntry(models.Model):
 		return self.test_nome
 
 
-class Photo(models.Model):
-	legenda = models.CharField(max_length=200, default='legenda')
-	photo = models.ImageField()
+#class Photo(models.Model):
+	#legenda = models.CharField(max_length=200, default='legenda')
+	#photo = models.ImageField()
 
-	class Meta:
-		verbose_name_plural = "Photos"
+	#class Meta:
+		#verbose_name_plural = "Photos"
 
-	def __str__(self):
-		return self.photo.name
+	#def __str__(self):
+		#return self.photo.name

@@ -1,5 +1,5 @@
 from django import forms
-from .models import TestEntry, Photo
+from .models import TestEntry # , Photo
 
 class EntradaTeste(forms.ModelForm):
 
@@ -9,9 +9,9 @@ class EntradaTeste(forms.ModelForm):
 		fields = ['test_nome', 'test_topic', 'test_sumary']
 
 
-class UploadImage(forms.ModelForm):
+# class UploadImage(forms.ModelForm):
 
-	class Meta:
+	#class Meta:
 
-		model = Photo
-		fields = ['legenda', 'photo']
+		#model = Photo
+		#fields = ['legenda', 'photo']

@@ -1,9 +1,9 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.views.generic import TemplateView
-from .forms import EntradaTeste, UploadImage
+from .forms import EntradaTeste #, UploadImage
 from django.contrib.auth.decorators import login_required
-from .models import Photo
+#from .models import Photo
 from django.core.files.storage import FileSystemStorage
 
 
@@ -31,12 +31,12 @@ def nova_entrada(request):
                   context={"form": form})
 
 
-def upload_photo(request):
-    if request.method == 'POST':
-        upload_file = request.FILES['document']
-        fs.FileSystemStorage()
-        fs.save(upload_file.name, upload_file)
-    return render(request, 'main/upload.html')
+#def upload_photo(request):
+    #if request.method == 'POST':
+        #upload_file = request.FILES['document']
+        #fs.FileSystemStorage()
+        #fs.save(upload_file.name, upload_file)
+    #return render(request, 'main/upload.html')
 
 
 @login_required
@@ -46,10 +46,10 @@ def cad_home(request):
                   context={})  #
 
 
-def photo_page(request):
-    return render(request=request,
-                  template_name="main/photo_page.html",
-                  context={
-                      "foto": Photo.objects.first(),
-                  }
-                  )  #
+#def photo_page(request):
+    #return render(request=request,
+                  #template_name="main/photo_page.html",
+                  #context={
+                      #"foto": Photo.objects.first(),
+                  #}
+                  #)  #

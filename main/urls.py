@@ -12,8 +12,8 @@ urlpatterns = [
     path('', HomePageView.as_view(), name='home'),
     path("entrada/", views.nova_entrada, name="nova_entrada"),
     path("cad_home/", views.cad_home, name="cad_home"),
-    path("photo_page/", views.photo_page, name="Foto"),
-    path("upload_photo/", views.upload_photo, name="Foto"),
+    #path("photo_page/", views.photo_page, name="Foto"),
+    #path("upload_photo/", views.upload_photo, name="Foto"),
     #caddecampo
     #path('', include('caddecampo.urls')),
 

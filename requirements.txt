@@ -76,7 +76,7 @@ screen-resolution-extra==0.0.0
 SecretStorage==2.3.1
 simplejson==3.16.0
 six==1.14.0
-sqlparse==0.4.1
+sqlparse==0.4.2
 systemd-python==234
 ubuntu-advantage-tools==20.3
 ubuntu-drivers-common==0.0.0

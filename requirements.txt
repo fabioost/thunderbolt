@@ -19,7 +19,7 @@ defusedxml==0.6.0
 distlib==0.3.1
 distro==1.4.0
 distro-info===0.23ubuntu1
-Django==3.1.3
+Django==3.1.13
 django-allauth==0.43.0
 django-cpffield==0.1.1
 django-crispy-forms==1.10.0
